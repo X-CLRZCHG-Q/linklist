@@ -1,0 +1,40 @@
+# Project: ÏîÄ¿9
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = ../source/main.o ../source/data_io.o ../source/performance_tests.o ../source/small_data_tests.o ../source/sort.o
+LINKOBJ  = ../source/main.o ../source/data_io.o ../source/performance_tests.o ../source/small_data_tests.o ../source/sort.o
+LIBS     = -L"D:/Dev-Cpp/MinGW64/lib" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = sort.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+../source/main.o: ../source/main.c
+	$(CC) -c ../source/main.c -o ../source/main.o $(CFLAGS)
+
+../source/data_io.o: ../source/data_io.c
+	$(CC) -c ../source/data_io.c -o ../source/data_io.o $(CFLAGS)
+
+../source/performance_tests.o: ../source/performance_tests.c
+	$(CC) -c ../source/performance_tests.c -o ../source/performance_tests.o $(CFLAGS)
+
+../source/small_data_tests.o: ../source/small_data_tests.c
+	$(CC) -c ../source/small_data_tests.c -o ../source/small_data_tests.o $(CFLAGS)
+
+../source/sort.o: ../source/sort.c
+	$(CC) -c ../source/sort.c -o ../source/sort.o $(CFLAGS)
